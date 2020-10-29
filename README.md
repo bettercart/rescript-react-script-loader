@@ -79,3 +79,9 @@ rendering, but you can also pass in named callbacks `onLoad` and `onFailure`.
   }
 
 ```
+
+No Callback Props:
+
+```
+    let scriptStatus: Script.status = Script.useScript(~src=url, ())
+```
