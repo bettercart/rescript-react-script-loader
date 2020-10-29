@@ -68,7 +68,7 @@ rendering, but you can also pass in named callbacks `onLoad` and `onFailure`.
 
   /* only a single script tag is created per unique url */
 
-  let scriptStatus: Script.status = Script.useScript(~src=url, ~onLoad, ~onFailure)
+  let scriptStatus: ReactScript.status = ReactScript.useScript(~src=url, ~onLoad, ~onFailure)
 
   switch scriptStatus {
   | Idle => <div> {"Idle"->React.string} </div>
