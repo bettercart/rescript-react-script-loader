@@ -59,11 +59,11 @@ rendering, but you can also pass in named callbacks `onLoad` and `onFailure`.
 ```
   open ReactScript
 
-  let onLoad = (event: Browser.Webapi.Dom.Event.t) => {
+  let onLoad = (event: Webapi.Dom.Event.t) => {
     Js.log2("Loaded", event)
   }
 
-  let onFailure = (event: Browser.Webapi.Dom.Event.t) => {
+  let onFailure = (event: Webapi.Dom.Event.t) => {
     Js.log2("Failed", event)
   }
 
