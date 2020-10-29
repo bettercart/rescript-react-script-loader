@@ -52,7 +52,6 @@ let useScript = (
 
         Some(
           () => {
-            Js.log("REMOVE LISTENERS - Existing")
             Webapi.Dom.Element.removeEventListener("load", error => handleOnLoad(s, error), s)
             Webapi.Dom.Element.removeEventListener("error", error => handleOnError(s, error), s)
           },
@@ -76,7 +75,6 @@ let useScript = (
 
         Some(
           () => {
-            Js.log("REMOVE LISTENERS")
             Webapi.Dom.Element.removeEventListener(
               "load",
               error => handleOnLoad(script, error),
