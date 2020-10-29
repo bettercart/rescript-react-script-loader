@@ -1,0 +1,35 @@
+g_pkg_flg = -bs-package-name @bettercart/res-react-script-loader -bs-ns ReactScript
+src_root_dir = /Users/danwetherald/Developer/OpenSource/@bettercart/res-react-script-loader
+bsc = /Users/danwetherald/.config/yarn/global/node_modules/bs-platform/darwin/bsc.exe
+bsdep = /Users/danwetherald/.config/yarn/global/node_modules/bs-platform/darwin/bsb_helper.exe
+warnings =  -warn-error +101
+bsc_flags = 
+ppx_flags = 
+g_dpkg_incls = 
+g_ns = -bs-ns ReactScript
+g_lib_incls = -I . -I src -I /Users/danwetherald/Developer/node_modules/reason-react/lib/ocaml -I /Users/danwetherald/Developer/OpenSource/@bettercart/res-react-script-loader/node_modules/bs-webapi/lib/ocaml
+rule build_ast_from_re
+  command = $bsc  $warnings -bs-jsx 3 $bsc_flags -o $out -bs-syntax-only -bs-binary-ast $in
+
+build  src/Script.resast : build_ast_from_re $src_root_dir/src/Script.res
+rule mk_deps
+  command = $bsdep -hash a830535e0490ca3d4ac7621b48bed8c7 $g_ns $in
+  restat = 1
+
+build  src/Script.d : mk_deps src/Script.resast
+rule ml_cmj_cmi
+  command = $bsc $g_pkg_flg $g_lib_incls $warnings $bsc_flags -o $out $in
+  dyndep = $in_e.d
+  restat = 1
+
+build  src/Script-ReactScript.cmj |  src/Script-ReactScript.cmi ../../src/Script.bs.js : ml_cmj_cmi src/Script.resast ||  src/Script.d
+  g_pkg_flg = $g_pkg_flg  -bs-package-output commonjs:src:.bs.js
+build  src/Browser.resast : build_ast_from_re $src_root_dir/src/Browser.res
+build  src/Browser.d : mk_deps src/Browser.resast
+build  src/Browser-ReactScript.cmj |  src/Browser-ReactScript.cmi ../../src/Browser.bs.js : ml_cmj_cmi src/Browser.resast ||  src/Browser.d
+  g_pkg_flg = $g_pkg_flg  -bs-package-output commonjs:src:.bs.js
+rule build_package
+  command = $bsc -w -49 -color always -no-alias-deps  $in
+  restat = 1
+
+build  ReactScript.cmi : build_package ReactScript.mlmap

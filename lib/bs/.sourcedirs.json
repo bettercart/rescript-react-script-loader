@@ -1,0 +1,1 @@
+{ "dirs" : [ "src" ] , "pkgs" : [ [ "bs-platform" , "/Users/danwetherald/Developer/node_modules/bs-platform" ] , [ "bs-webapi" , "/Users/danwetherald/Developer/OpenSource/@bettercart/res-react-script-loader/node_modules/bs-webapi" ] , [ "reason-react" , "/Users/danwetherald/Developer/node_modules/reason-react" ] ] , "generated" : [] }
