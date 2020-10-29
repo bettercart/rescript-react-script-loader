@@ -1,6 +1,6 @@
 {
   "name": "@bettercart/res-react-script-loader",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Load third-party scripts into your react app using hooks.",
   "main": "index.js",
   "repository": "https://github.com/bettercart/res-react-script-loader",

@@ -4,23 +4,25 @@ type status =
   | Ready
   | Failed
 
-let useScript = (
-  ~src: string,
-  ~onLoad: Webapi.Dom.Event.t => unit,
-  ~onFailure: Webapi.Dom.Event.t => unit,
-) => {
+let useScript = (~src: string, ~onLoad=?, ~onFailure=?, ()) => {
   let (status: status, setStatus) = React.useState(_ => Idle)
 
   let handleOnLoad = (script, event) => {
     Webapi.Dom.Element.setAttribute("data-status", "ready", script)
     setStatus(_ => Ready)
-    onLoad(event)
+    switch onLoad {
+    | Some(cb) => cb(event)
+    | _ => ()
+    }
   }
 
   let handleOnError = (script, event) => {
     Webapi.Dom.Element.setAttribute("data-status", "failed", script)
     setStatus(_ => Failed)
-    onFailure(event)
+    switch onFailure {
+    | Some(cb) => cb(event)
+    | _ => ()
+    }
   }
 
   React.useEffect1(() => {
