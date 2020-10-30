@@ -56,7 +56,7 @@ The `useScript` hook will return the status of the tag that you can listen for t
 rendering, but you can also pass in named callbacks `onLoad` and `onFailure`.
 
 
-```
+```re
   open ReactScript
 
   let onLoad = (event: Webapi.Dom.Event.t) => {
@@ -82,6 +82,6 @@ rendering, but you can also pass in named callbacks `onLoad` and `onFailure`.
 
 No Callback Props:
 
-```
+```re
     let scriptStatus: Script.status = Script.useScript(~src=url, ())
 ```
