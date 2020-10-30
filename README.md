@@ -1,5 +1,5 @@
 
-# res-react-script-loader
+# rescript-react-script-loader
 
 A script loader for reason-react written in rescript-lang.
 
@@ -8,20 +8,20 @@ A script loader for reason-react written in rescript-lang.
 Using NPM:
 
 ```sh
-npm install --save @bettercart/res-react-script-loader
+npm install --save @bettercart/rescript-react-script-loader
 ```
 
 Using Yarn:
 
 ```sh
-yarn add @bettercart/res-react-script-loader
+yarn add @bettercart/rescript-react-script-loader
 ```
 
-Then add `@bettercart/res-react-script-loader` to `bs-dependencies` in your `bsconfig.json`:
+Then add `@bettercart/rescript-react-script-loader` to `bs-dependencies` in your `bsconfig.json`:
 ```js
 {
   ...
-  "bs-dependencies": ["@bettercart/res-react-script-loader"]
+  "bs-dependencies": ["@bettercart/rescript-react-script-loader"]
 }
 ```
 

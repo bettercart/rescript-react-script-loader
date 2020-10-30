@@ -1,5 +1,5 @@
 {
-  "name": "@bettercart/res-react-script-loader",
+  "name": "@bettercart/rescript-react-script-loader",
   "namespace": "ReactScript",
   "reason": {
     "react-jsx": 3
