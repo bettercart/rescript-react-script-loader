@@ -1,6 +1,6 @@
 {
   "name": "@bettercart/rescript-react-script-loader",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "Load third-party scripts into your react app using hooks.",
   "main": "index.js",
   "repository": "https://github.com/bettercart/rescript-react-script-loader",
@@ -24,7 +24,11 @@
     "bs-webapi": "^0.19.1"
   },
   "peerDependencies": {
-    "bs-platform": "^8.4.2",
-    "reason-react": "^0.9.1"
+    "bs-platform": "^9.0.1",
+    "@rescript/react": "^0.10.1"
+  },
+  "devDependencies": {
+    "bs-platform": "^9.0.1",
+    "@rescript/react": "^0.10.1"
   }
 }
