@@ -64,25 +64,25 @@ let useScript = (~src: string, ~onLoad=?, ~onFailure=?, ~crossorigin=?, ~async=?
         let _document = Browser.document
 
         Webapi.Dom.Element.setAttribute("src", src, script)
-        
+
         Webapi.Dom.Element.setAttribute("data-status", "loading", script)
 
         switch crossorigin {
-          | Some(co) => Webapi.Dom.Element.setAttribute("crossorigin", co, script) 
-          | None => ignore()
+        | Some(co) => Webapi.Dom.Element.setAttribute("crossorigin", co, script)
+        | None => ignore()
         }
 
         switch async {
-          | Some(_) => Webapi.Dom.Element.setAttribute("async", "true", script) 
-          | None => Webapi.Dom.Element.setAttribute("async", "false", script)
+        | Some(_) => Webapi.Dom.Element.setAttribute("async", "true", script)
+        | None => Webapi.Dom.Element.setAttribute("async", "false", script)
         }
 
         Webapi.Dom.Element.addEventListener("load", event => handleOnLoad(script, event), script)
         Webapi.Dom.Element.addEventListener("error", event => handleOnError(script, event), script)
 
-        let bodyElements = Webapi.Dom.Document.getElementsByTagName("body", Browser.document)
-        switch Webapi.Dom.HtmlCollection.item(0, bodyElements) {
-        | Some(body) => Webapi.Dom.Element.appendChild(script, body)
+        let headElements = Webapi.Dom.Document.getElementsByTagName("head", Browser.document)
+        switch Webapi.Dom.HtmlCollection.item(0, headElements) {
+        | Some(head) => Webapi.Dom.Element.appendChild(script, head)
         | _ => setStatus(_ => Failed)
         }
 

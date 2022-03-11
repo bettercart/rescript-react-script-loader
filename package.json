@@ -1,6 +1,6 @@
 {
   "name": "@bettercart/rescript-react-script-loader",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Load third-party scripts into your react app using hooks.",
   "main": "index.js",
   "repository": "https://github.com/bettercart/rescript-react-script-loader",
