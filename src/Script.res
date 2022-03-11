@@ -4,7 +4,7 @@ type status =
   | Ready
   | Failed
 
-let useScript = (~src: string, ~onLoad=?, ~onFailure=?, ~crossorigin=?, ()) => {
+let useScript = (~src: string, ~onLoad=?, ~onFailure=?, ~crossorigin=?, ~async=?, ()) => {
   let (status: status, setStatus) = React.useState(_ => Idle)
 
   let handleOnLoad = (script, event) => {
@@ -64,12 +64,17 @@ let useScript = (~src: string, ~onLoad=?, ~onFailure=?, ~crossorigin=?, ()) => {
         let _document = Browser.document
 
         Webapi.Dom.Element.setAttribute("src", src, script)
-        Webapi.Dom.Element.setAttribute("async", "true", script)
+        
         Webapi.Dom.Element.setAttribute("data-status", "loading", script)
 
         switch crossorigin {
           | Some(co) => Webapi.Dom.Element.setAttribute("crossorigin", co, script) 
           | None => ignore()
+        }
+
+        switch async {
+          | Some(_) => Webapi.Dom.Element.setAttribute("async", "true", script) 
+          | None => Webapi.Dom.Element.setAttribute("async", "false", script)
         }
 
         Webapi.Dom.Element.addEventListener("load", event => handleOnLoad(script, event), script)
